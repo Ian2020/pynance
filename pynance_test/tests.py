@@ -1,4 +1,5 @@
-from nose.tools import assert_equals
+from nose.tools import eq_
+from nose.tools import ok_
 import pynance
 import pyperclip
 
@@ -13,20 +14,27 @@ def copy_one_trans_to_clipboard():
 
 def test_importing_nothing_gives_nothing():
     pyperclip.copy("")
+
     trans = pynance.import_sant()
-    assert_equals(trans, None)
+
+    eq_(trans, None)
 
 
 def test_importing_gives_transactions():
     copy_one_trans_to_clipboard()
+
     trans = pynance.import_sant()
+
     # Is there an assert_notequals ?
-    assert trans is not None
+    ok_(trans is not None)
 
 
 def test_importing_gives_one_transaction():
     copy_one_trans_to_clipboard()
+
     trans = pynance.import_sant()
     printed_trans = trans.to_list()
-    assert_equals(len(printed_trans), 1)
-    assert_equals(len(printed_trans[0]), 4)
+
+    eq_(len(printed_trans), 1)
+    eq_(len(printed_trans[0]), 4)
+    # eq_(printed_trans[0][1], ???)
