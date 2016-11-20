@@ -12,6 +12,11 @@ def copy_one_trans_to_clipboard():
                    " GBP, RATE 1.00/GBP ON 15-11-2016 \t\t$54.96 \t$1,490.99")
 
 
+def copy_one_positive_trans_to_clipboard():
+    pyperclip.copy("17/11/2016\tCARD PAYMENT TO Amazon UK Marketplace,54.96"
+                   " GBP, RATE 1.00/GBP ON 15-11-2016 \t$40.00 \t\t$1,490.99")
+
+
 def copy_two_trans_to_clipboard():
     pyperclip.copy("17/11/2016\tCARD PAYMENT TO Amazon UK Marketplace,54.96"
                    " GBP, RATE 1.00/GBP ON 15-11-2016 \t\t$54.96 \t$1,490.99\n"
@@ -57,6 +62,22 @@ def test_importing_gives_one_transaction():
     eq_(printed_trans[0][1], "CARD PAYMENT TO Amazon UK Marketplace,54.96 GBP,"
                              " RATE 1.00/GBP ON 15-11-2016 ")
     eq_(printed_trans[0][2], "$54.96 ")
+    eq_(printed_trans[0][3], "$1,490.99")
+
+
+def test_importing_gives_one_positive_transaction():
+    copy_one_positive_trans_to_clipboard()
+
+    trans = pynance.import_sant()
+    printed_trans = trans.to_list()
+
+    eq_(len(printed_trans), 1)
+    eq_(len(printed_trans[0]), 4, "Expected 4 items in trans, found this: %s"
+                                  % trans)
+    eq_(printed_trans[0][0], "17/11/2016")
+    eq_(printed_trans[0][1], "CARD PAYMENT TO Amazon UK Marketplace,54.96 GBP,"
+                             " RATE 1.00/GBP ON 15-11-2016 ")
+    eq_(printed_trans[0][2], "$40.00 ")
     eq_(printed_trans[0][3], "$1,490.99")
 
 

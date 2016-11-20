@@ -4,13 +4,23 @@ import pyperclip
 class Transactions:
     def __init__(self, text):
         self._transactions = list()
-        for line in text.split("\r\n"):
-            if(len(line) > 0):
-                trans = list()
-                initial_split = line.split("\t")
-                for idx in (0, 1, 3, 4):
-                    trans.append(initial_split[idx])
-                self._transactions.append(trans)
+        for line in text.splitlines():
+            trans = list()
+            initial_split = line.split("\t")
+            for idx in range(5):
+                thing_to_add = initial_split[idx]
+                if idx == 2 and len(thing_to_add) == 0:
+                    continue
+                if idx == 3:
+                    if len(thing_to_add) == 0:
+                        continue
+                    else:
+                        # TODO: Make it negative
+                        # thing_to_add = ???
+                        pass
+
+                trans.append(thing_to_add)
+            self._transactions.append(trans)
 
     def __str__(self):
         printed = ""
