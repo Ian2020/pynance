@@ -9,6 +9,10 @@ your own spreadsheet(s):
 1. Run an expression in the Python interpreter and the transactions will be printed
    in a format that's easy to import into a spreadsheet
 
+It only works with following bank sites:
+
+* Santander
+
 ## Requirements
 
 * Python3
@@ -25,7 +29,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Login to Santander. Copy some transactions to your clipboard then in a Python
+Login to your bank's site. Copy some transactions to your clipboard then in a Python
 interpreter (running under your virtual env) enter:
 
 ```python
