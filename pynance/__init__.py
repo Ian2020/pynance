@@ -16,8 +16,7 @@ class Transactions:
                         continue
                     else:
                         # TODO: Make it negative
-                        # thing_to_add = ???
-                        pass
+                        thing_to_add = thing_to_add.replace("£", "£-")
 
                 trans.append(thing_to_add)
             self._transactions.append(trans)
