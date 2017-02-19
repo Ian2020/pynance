@@ -45,4 +45,8 @@ For example:
 
 >19/11/2016 |CARD PAYMENT TO BP,10.00 GBP, RATE 1.00/GBP ON 17-11-2016 |£10.00 |£50.00
 
+## Troubleshooting
+
+Pyperclip may have mechanism problems: see [Not Implemented Error (pyperclip.readthedocs.io)](https://pyperclip.readthedocs.io/en/latest/introduction.html)
+
 ...note we use pipe (|) as the separator.
